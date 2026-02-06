@@ -1,0 +1,168 @@
+import tkinter as tk
+import random
+
+# ================== APP ESTILO REVISTA ==================
+class RevistaAdivina:
+
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Adivina el Número - Magazine Edition")
+        self.root.geometry("500x600")
+        self.root.configure(bg="#f4f4f4")
+        self.root.resizable(False, False)
+
+        self.numero_secreto = random.randint(1, 100)
+        self.intentos = 0
+        self.max_intentos = 10
+        self.historial = []
+
+        # ---------- PORTADA ----------
+        portada = tk.Frame(root, bg="#111111", height=120)
+        portada.pack(fill="x")
+
+        titulo = tk.Label(
+            portada,
+            text="MAGAZINE GAME",
+            fg="white",
+            bg="#111111",
+            font=("Arial", 22, "bold")
+        )
+        titulo.pack(pady=(25,0))
+
+        subtitulo = tk.Label(
+            portada,
+            text="Adivina el Número",
+            fg="#dddddd",
+            bg="#111111",
+            font=("Arial", 12)
+        )
+        subtitulo.pack()
+
+        # ---------- TARJETA CENTRAL ----------
+        card = tk.Frame(root, bg="white", bd=0)
+        card.place(x=40, y=140, width=420, height=420)
+
+        info = tk.Label(
+            card,
+            text="Estoy pensando en un número del 1 al 100",
+            bg="white",
+            font=("Arial", 12)
+        )
+        info.pack(pady=15)
+
+        self.intentos_label = tk.Label(
+            card,
+            text="Intentos restantes: 10",
+            bg="white",
+            font=("Arial", 11, "bold")
+        )
+        self.intentos_label.pack()
+
+        self.entry = tk.Entry(
+            card,
+            font=("Arial", 16),
+            justify="center",
+            bd=0,
+            highlightthickness=1,
+            highlightbackground="#cccccc"
+        )
+        self.entry.pack(pady=20, ipadx=10, ipady=5)
+
+        self.boton = tk.Button(
+            card,
+            text="INTENTAR",
+            bg="#111111",
+            fg="white",
+            font=("Arial", 11, "bold"),
+            width=18,
+            command=self.verificar
+        )
+        self.boton.pack()
+
+        self.resultado = tk.Label(
+            card,
+            text="",
+            bg="white",
+            fg="#333333",
+            font=("Arial", 12)
+        )
+        self.resultado.pack(pady=15)
+
+        self.historial_label = tk.Label(
+            card,
+            text="Intentos: -",
+            bg="white",
+            fg="#666666",
+            font=("Arial", 10)
+        )
+        self.historial_label.pack()
+
+        self.reiniciar_btn = tk.Button(
+            card,
+            text="VOLVER A JUGAR",
+            bg="#eaeaea",
+            font=("Arial", 10, "bold"),
+            command=self.reiniciar,
+            state="disabled"
+        )
+        self.reiniciar_btn.pack(pady=25)
+
+    # ================== FUNCIONES ==================
+    def verificar(self):
+        try:
+            intento = int(self.entry.get())
+        except:
+            self.resultado.config(text="⚠️ Escribe un número válido")
+            return
+
+        if intento < 1 or intento > 100:
+            self.resultado.config(text="⚠️ Debe ser entre 1 y 100")
+            return
+
+        self.intentos += 1
+        self.historial.append(intento)
+
+        self.historial_label.config(
+            text="Intentos: " + ", ".join(map(str, self.historial))
+        )
+
+        restantes = self.max_intentos - self.intentos
+        self.intentos_label.config(text=f"Intentos restantes: {restantes}")
+
+        if intento == self.numero_secreto:
+            self.resultado.config(text="🎉 ¡Adivinaste! Edición ganadora")
+            self.terminar()
+        elif intento < self.numero_secreto:
+            self.resultado.config(text="Te quedaste corto ↑")
+        else:
+            self.resultado.config(text="Te pasaste ↓")
+
+        if self.intentos >= self.max_intentos and intento != self.numero_secreto:
+            self.resultado.config(
+                text=f"Fin de edición ❌ Era {self.numero_secreto}"
+            )
+            self.terminar()
+
+        self.entry.delete(0, tk.END)
+
+    def terminar(self):
+        self.boton.config(state="disabled")
+        self.reiniciar_btn.config(state="normal")
+
+    def reiniciar(self):
+        self.numero_secreto = random.randint(1, 100)
+        self.intentos = 0
+        self.historial = []
+
+        self.intentos_label.config(text="Intentos restantes: 10")
+        self.historial_label.config(text="Intentos: -")
+        self.resultado.config(text="")
+
+        self.boton.config(state="normal")
+        self.reiniciar_btn.config(state="disabled")
+
+
+# ================== EJECUTAR ==================
+root = tk.Tk()
+app = RevistaAdivina(root)
+root.mainloop()
