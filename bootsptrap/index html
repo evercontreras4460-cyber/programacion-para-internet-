@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecciones Store</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #fff;
+        }
+        
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background-color: #1a1a1a;
+            border: none;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .price-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #f9d423, #ff4e50);
+            color: #000;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .card img {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        footer {
+            background-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Selecciones Store</a>
+        </div>
+    </nav>
+
+    <!-- Título -->
+    <div class="container text-center my-5">
+        <h1 class="section-title">Nuestra Colección</h1>
+        <p class="text-secondary">Playeras oficiales de selecciones nacionales</p>
+    </div>
+
+    <!-- Productos -->
+    <div class="container">
+        <div class="row g-4">
+
+            <!-- México -->
+            <div class="col-md-4">
+                <div class="card position-relative h-100">
+                    <span class="price-tag">$899 MXN</span>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Mexico_national_football_team_kit_2022.jpg" alt="México">
+                    <div class="card-body">
+                        <h5 class="card-title">México Local</h5>
+                        <p class="text-secondary">Edición oficial</p>
+                        <button class="btn btn-outline-warning w-100">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Argentina -->
+            <div class="col-md-4">
+                <div class="card position-relative h-100">
+                    <span class="price-tag">$999 MXN</span>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Argentina_national_football_team_kit_2022.jpg" alt="Argentina">
+                    <div class="card-body">
+                        <h5 class="card-title">Argentina Campeón</h5>
+                        <p class="text-secondary">Versión Mundial</p>
+                        <button class="btn btn-outline-warning w-100">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Brasil -->
+            <div class="col-md-4">
+                <div class="card position-relative h-100">
+                    <span class="price-tag">$979 MXN</span>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Brazil_national_football_team_kit_2022.jpg" alt="Brasil">
+                    <div class="card-body">
+                        <h5 class="card-title">Brasil Local</h5>
+                        <p class="text-secondary">Diseño clásico</p>
+                        <button class="btn btn-outline-warning w-100">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Francia -->
+            <div class="col-md-4">
+                <div class="card position-relative h-100">
+                    <span class="price-tag">$949 MXN</span>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/France_national_football_team_kit_2022.jpg" alt="Francia">
+                    <div class="card-body">
+                        <h5 class="card-title">Francia Local</h5>
+                        <p class="text-secondary">Edición europea</p>
+                        <button class="btn btn-outline-warning w-100">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alemania -->
+            <div class="col-md-4">
+                <div class="card position-relative h-100">
+                    <span class="price-tag">$929 MXN</span>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Germany_national_football_team_kit_2022.jpg" alt="Alemania">
+                    <div class="card-body">
+                        <h5 class="card-title">Alemania Local</h5>
+                        <p class="text-secondary">Diseño moderno</p>
+                        <button class="btn btn-outline-warning w-100">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- España -->
+            <div class="col-md-4">
+                <div class="card position-relative h-100">
+                    <span class="price-tag">$919 MXN</span>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Spain_national_football_team_kit_2022.jpg" alt="España">
+                    <div class="card-body">
+                        <h5 class="card-title">España Local</h5>
+                        <p class="text-secondary">Edición oficial</p>
+                        <button class="btn btn-outline-warning w-100">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-secondary py-4 mt-5">
+        © 2026 Selecciones Store | HTML + Bootstrap
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
