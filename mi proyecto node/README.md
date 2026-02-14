@@ -20,9 +20,10 @@ node server.js
 
 4. Abrir en el navegador:
 
-http://localhost:3000
+https://programacion-para-internet-xote.onrender.com
 
 ## Funcionalidad
 - Genera frases aleatorias.
 - Tiene diseño personalizado.
 - Funciona como servidor local.
+
