@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Página con Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding-top: 50px;
+        }
+        
+        .card {
+            background: white;
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+        
+        input {
+            padding: 8px;
+            width: 80%;
+            margin-bottom: 10px;
+        }
+        
+        button {
+            padding: 8px 15px;
+            background: #42b983;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: #369870;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app" class="card">
+        <h2>Mi Primera Página con Vue 🚀</h2>
+
+        <input v-model="nombre" placeholder="Escribe tu nombre">
+        <br>
+        <button @click="saludar">Saludar</button>
+
+        <p v-if="nombre">Hola {{ nombre }} 👋</p>
+    </div>
+
+    <script>
+        const {
+            createApp
+        } = Vue
+
+        createApp({
+            data() {
+                return {
+                    nombre: ''
+                }
+            },
+            methods: {
+                saludar() {
+                    alert("Bienvenido " + this.nombre)
+                }
+            }
+        }).mount('#app')
+    </script>
+
+</body>
+
+</html>
