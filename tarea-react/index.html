@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tarea ReactJS</title>
+
+    <!-- React -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        input {
+            padding: 8px;
+            width: 70%;
+            margin-right: 5px;
+        }
+        
+        button {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        
+        li {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        function App(){ const [tareas,setTareas] = React.useState([]); const [texto,setTexto] = React.useState(""); function agregarTarea(){ if(texto.trim() !== ""){ setTareas([...tareas,texto]); setTexto(""); } } function eliminarTarea(index){ const nuevasTareas
+        = tareas.filter((t,i)=> i !== index); setTareas(nuevasTareas); } return(
+
+        <div className="container">
+
+            <h2>Lista de jugadores</h2>
+
+            <input type="text" placeholder="Escribe un jugador" value={texto} onChange={(e)=>setTexto(e.target.value)} />
+
+            <button onClick={agregarTarea}>
+Agregar
+</button>
+
+            <ul>
+
+                {tareas.map((tarea,index)=>(
+                <li key={index}>
+
+                    {tarea}
+
+                    <button onClick={()=>eliminarTarea(index)}>
+X
+</button>
+
+                </li>
+                ))}
+
+            </ul>
+
+        </div>
+
+        ) } ReactDOM.createRoot(document.getElementById("root")).render(
+
+        <App/>);
+
+    </script>
+
+</body>
+
+</html>
